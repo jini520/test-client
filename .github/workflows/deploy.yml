@@ -27,7 +27,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build application
         run: pnpm run build
@@ -42,7 +42,7 @@ jobs:
           script: |
             cd /home/jinni/test-client
             git pull origin test
-            pnpm ci
+            pnpm install --frozen-lockfile
             pnpm run build
             # docker build -t my-app-test .
             # docker stop my-app-test || true
@@ -59,7 +59,7 @@ jobs:
           script: |
             cd /home/jinni/test-client
             git pull origin main
-            pnpm ci
+            pnpm install --frozen-lockfile
             pnpm run build
             # docker build -t my-app-prod .
             # docker stop my-app-prod || true

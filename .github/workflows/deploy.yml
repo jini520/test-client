@@ -45,9 +45,8 @@ jobs:
             pnpm install --frozen-lockfile
             pnpm run build
 
-            # 서버 재시작 (프로덕션 모드인 경우)
-            pkill -f "next start" || true
-            pnpm run start &
+            # PM2로 무중단 배포
+            pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js 
 
             # docker build -t my-app-test .
             # docker stop my-app-test || true
@@ -67,9 +66,8 @@ jobs:
             pnpm install --frozen-lockfile
             pnpm run build
 
-            # 서버 재시작 (프로덕션 모드인 경우)
-            pkill -f "next start" || true
-            pnpm run start &
+            # PM2로 무중단 배포
+            pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
 
             # docker build -t my-app-prod .
             # docker stop my-app-prod || true
